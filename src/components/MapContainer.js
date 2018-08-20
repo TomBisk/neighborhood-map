@@ -4,15 +4,6 @@ import './MapContainer.css'
 
 
 export class MapContainer extends Component {
-  
-	
-	state = {
-		locations: [
-			{ name: '"Guido" Mine', location: {lat: 50.28958, lng: 18.791349 } },
-			{ name: 'Power Plant "Szombierki"', location: {lat: 50.344448, lng: 18.885994 } },
-			{ name: 'Headframe of mine shaft "Prezydent"', location: {lat: 50.29795, lng: 18.967152 } },	
-		],
-	}
 	
 	render() {
     return (
