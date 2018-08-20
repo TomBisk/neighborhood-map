@@ -3,7 +3,7 @@ import './Search.css'
 
 
 const Search = () => (
-	<div className="search-books-input-wrapper">
+	<div className="search-input-wrapper">
 						<input 
 							className="search-input"
 							type="text" 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './components/Header';
 import Search from './components/Search';
+import PlacesList from './components/PlacesList';
 import MapContainer from './components/MapContainer';
 import Footer from './components/Footer';
 
@@ -32,6 +33,9 @@ class App extends Component {
 				<div className="container">
 					<aside id="aside" className="sidebar is-hidden">
 						<Search/>
+						<PlacesList/>
+						<PlacesList/>
+						
 					</aside>
 					<div className="map">
 						<MapContainer/>
