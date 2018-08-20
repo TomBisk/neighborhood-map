@@ -6,12 +6,31 @@ import MapContainer from './components/MapContainer';
 import Footer from './components/Footer';
 
 class App extends Component {
-  render() {
+  
+	
+	getData = () => {
+		
+		
+		/*https://api.foursquare.com/v2/venues/explore
+			?client_id=IN5TUWGGA1WEYLPY4HIWWOTFLOFYZ4A40GUDST5IJC4ZQ2K4
+			&client_secret=ZTMTGWJJZDYY4XAIMVKSD5RXLMGLUGSQTC5SSDEQYOFLJUZA
+			&ll=50.26489189999999,19.0237815
+			&categoryId=4bf58dd8d48988d181941735
+			&radius=10000
+			&limit=20
+			&v=20180818*/
+	}
+	
+	
+	
+	
+	
+	render() {
     return (
       <div className="App">
         <Header/>
 				<div className="container">
-					<aside className="sidebar">
+					<aside id="aside" className="sidebar is-hidden">
 						<Search/>
 					</aside>
 					<div className="map">
@@ -23,5 +42,6 @@ class App extends Component {
     );
   }
 }
+
 
 export default App;

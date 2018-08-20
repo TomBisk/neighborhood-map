@@ -12,7 +12,35 @@
 	align-items: center;
   height: 60px;
   background-color: #222;
-  color: white;
+  color: #fff;
+}
+
+.header-menu {
+	display: initial;
+	position: fixed;
+	top: 0;
+	left: 0;
+	margin: 17px;
+	cursor: pointer;
+}
+
+.menu-icon {
+  width: 40px;
+  height: 5px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.menu-color {
+	background-color: #ddd;
+}
+
+.menu-active {
+	background-color: #fff;
+}
+
+.header-menu:hover path {
+	fill: #fff;
 }
 
 .header-logo {
@@ -42,9 +70,17 @@
 /* ====== SIDEBAR ======*/
 
 .sidebar {
-	width: 200px ;
+/*	width: 200px ;*/
 	height: ;
 	background-color: orange;
+}
+
+.is-hidden {
+	width: 0;
+}
+
+.is-shown {
+	width: 200px;
 }
 
 /* ====== MAP ======*/
@@ -52,7 +88,6 @@
 .map {
 	width: 100%;
 	height: calc(100vh-120px);
-	background-color: red;
 	position: relative;
 }
 
@@ -65,5 +100,20 @@
 	align-items: center;
 	height: 60px;
   background-color: #222;
-  color: white;
+  color: #fff;
 }
+
+
+/* ====== @MEDIA ====== */
+
+
+@media screen and (min-width: 1200px) {
+	.header-menu {
+		display: none;
+	}
+	
+	.is-hidden {
+		width: 200px;
+	}
+}
+
