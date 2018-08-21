@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './PlacesListItem.css';
 
 
 const PlacesItem = (props) => (
 	<li 
-		key={props.placeId}
 		className="list-item"
-	>{props.placeName}
+	>
+		{props.placeName}
 	</li>
 );
 

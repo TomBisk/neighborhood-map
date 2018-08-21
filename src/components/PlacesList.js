@@ -1,20 +1,16 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './PlacesListItem.css';
 import PlacesItem from './PlacesItem'
 
+
 const PlacesList = (props) => (
-	
 	<ul className="sidebar-list">
 		{props.filteredData.map(item => (
-
-		<PlacesItem
-			placeId={item.venue.id}
-			placeName={item.venue.name}
-		/>
-
-))}
-	
-	
+			<PlacesItem
+				key={item.venue.id}
+				placeName={item.venue.name}
+			/>
+		))}
 	</ul>
 );
 

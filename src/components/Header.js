@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 import '../App.css'
 import logo from '../utils/main-logo-icon.svg'
-//import menu from '../utils/menu-icon.svg'
+
 
 
 const Header = props => {
-	const menu = document.getElementById("menu");
+//	const menu = document.getElementById("menu");
 	const sidebar = document.getElementsByTagName("aside");
 	const menuIcon = document.getElementsByClassName("menu-icon");
 	const media = window.matchMedia("screen and (min-width: 1200px)");
