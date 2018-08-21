@@ -28,15 +28,21 @@ export class MapContainer extends Component {
         <Marker 
 					key={marker.venue.id}
 					onClick={this.props.onMarkerClick}
-          name={'Current location'}
+          
+					id={marker.venue.id}
 					title={marker.venue.name}
+					name={marker.venue.name}
+					category={marker.venue.categories[0].name}
+					address={marker.venue.location.formattedAddress[0]}
+					city={marker.venue.location.formattedAddress[1]}
+					photos={marker.venue.photos}
+			
 					position={{
 						lat: marker.venue.location.lat,
 						lng: marker.venue.location.lng
 					}}
-					icon={{
-						url: Pin,
-						
+					
+					icon={{url: (this.props.state.activeMarker.id === marker.venue.id ?  PinActive : Pin ),
 						scaledSize: new window.google.maps.Size(30,40),
 					}}
 				/>
@@ -47,9 +53,17 @@ export class MapContainer extends Component {
 					marker={this.props.state.activeMarker}
 					visible={this.props.state.showingInfoWindow}
 				>
-            <div>
-              <h1>{/*{this.state.selectedPlace.name}*/}</h1>
-            </div>
+					<div className="info-window">
+						<h1 className="info-name">{this.props.state.selectedPlace.name}</h1>
+
+<h2 className="info-category">{this.props.state.selectedPlace.category} </h2>
+
+<p className="info-address">{this.props.state.selectedPlace.address}</p>
+
+
+						<p className="info-address">{this.props.state.selectedPlace.city}</p>
+
+					</div>
         </InfoWindow>
       </Map>
     );

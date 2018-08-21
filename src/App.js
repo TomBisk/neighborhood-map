@@ -18,6 +18,7 @@ class App extends Component {
 		
 		activeMarker: {},
 		showingInfoWindow: false,
+		selectedPlace: {},
 	}
 	
 	
@@ -57,17 +58,18 @@ class App extends Component {
 	}
 	
 	getFiltered(query) {
-		return this.state.data.filter(item => item.venue.name.toLowerCase().includes(query.toLowerCase()))
+		return this.state.data.filter(item => item.venue.name.toLowerCase().includes(query.toLowerCase()) || item.venue.categories[0].name.toLowerCase().includes(query.toLowerCase()))
 	}
 	
 	onMarkerClick = (props, marker) => {
 		this.setState({
 		activeMarker: marker,
 		showingInfoWindow: true,
-				
+		selectedPlace: props,
+		
 	})
 	}
-	onMapClicked = (props) => {
+	onMapClicked = () => {
 		if (this.state.showingInfoWindow) {
 			this.setState({
 				showingInfoWindow: false,
@@ -99,6 +101,7 @@ class App extends Component {
 			
 							onMarkerClick={this.onMarkerClick}
 							onMapClicked={this.onMapClicked}
+							
 						/>
 					</div>
 				</div>

@@ -1,2 +1,29 @@
+/* ====== INFO WINDOW ======*/
+
+.info-window {
+	width: 170px;
+	padding: 10px;
+	
+}
+
+.info-name {
+	font-size: 16px;
+	padding-bottom: 5px;
+	
+}
+
+.info-category {
+	font-size: 12px;
+	border-top: 1px solid #bebcbc;
+	border-bottom: 1px solid #bebcbc;
+	padding: 5px;
+	
+}
+
+.info-address {
+	font-size: 12px;
+	padding-top: 5px;
+}
 
 
+/* ====== MEDIA ====== */
