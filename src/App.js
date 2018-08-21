@@ -15,6 +15,9 @@ class App extends Component {
 								lng: 19.0237815},
 		error: '',
 		query: '',
+		
+		activeMarker: {},
+		showingInfoWindow: false,
 	}
 	
 	
@@ -57,6 +60,24 @@ class App extends Component {
 		return this.state.data.filter(item => item.venue.name.toLowerCase().includes(query.toLowerCase()))
 	}
 	
+	onMarkerClick = (props, marker) => {
+		this.setState({
+		activeMarker: marker,
+		showingInfoWindow: true,
+				
+	})
+	}
+	onMapClicked = (props) => {
+		if (this.state.showingInfoWindow) {
+			this.setState({
+				showingInfoWindow: false,
+				activeMarker: null,
+			})
+		}
+		
+	
+	}
+
 	render() {
     return (
       <div className="App">
@@ -75,6 +96,9 @@ class App extends Component {
 					<div className="map">
 						<MapContainer
 							state={this.state}
+			
+							onMarkerClick={this.onMarkerClick}
+							onMapClicked={this.onMapClicked}
 						/>
 					</div>
 				</div>
