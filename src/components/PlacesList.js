@@ -3,8 +3,9 @@ import './PlacesListItem.css';
 import PlacesItem from './PlacesItem'
 
 const PlacesList = (props) => (
+	
 	<ul className="sidebar-list">
-		{props.data.map(item => (
+		{props.filteredData.map(item => (
 
 		<PlacesItem
 			placeId={item.venue.id}

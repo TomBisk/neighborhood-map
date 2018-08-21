@@ -10,9 +10,11 @@ class App extends Component {
   
 	state = {
 		data: [],
+		filteredData: [],
 		mapCenter: {lat: 50.26489189999999,
 								lng: 19.0237815},
 		error: '',
+		query: '',
 	}
 	
 	
@@ -36,6 +38,7 @@ class App extends Component {
 			  const data = res.response.groups[0].items
 				console.log(data)
 				this.setState({data})
+				this.setState({filteredData: data})
 		})
 		
 			.catch(error => {
@@ -44,15 +47,27 @@ class App extends Component {
 		})
 	}
 	
+	updateQuery = query => {
+		const filteredData = this.getFiltered(query)
+		this.setState({filteredData})
+		console.log(query)
+	}
+	
+	getFiltered(query) {
+		return this.state.data.filter(item => item.venue.name.toLowerCase().includes(query.toLowerCase()))
+	}
+	
 	render() {
     return (
       <div className="App">
         <Header/>
 				<div className="container">
 					<aside id="aside" className="sidebar is-hidden">
-						<Search/>
+						<Search
+							updateQuery={this.updateQuery}
+						/>
 						<PlacesList
-							data={this.state.data}
+							filteredData={this.state.filteredData}
 						/>
 						
 						
