@@ -13,14 +13,20 @@ export class MapContainer extends Component {
 					lat: 50.26489189999999,
 					lng: 19.0237815,
 				}}
-				zoom={14}
+				zoom={11}
 				/*onClick={onMapClicked}*/
 			>
-
+				{this.props.state.data.map(marker => (
+		
         <Marker 
 					onClick={this.onMarkerClick}
-          name={'Current location'} 
+          name={'Current location'}
+					position={{
+						lat:marker.venue.location.lat,
+						lng:marker.venue.location.lng
+					}}
 				/>
+			))}
 
         <InfoWindow onClose={this.onInfoWindowClose}>
             <div>

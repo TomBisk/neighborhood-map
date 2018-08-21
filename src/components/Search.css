@@ -1,17 +1,17 @@
 .search-input-wrapper {
-	max-width: 200px;
+	min-width: 250px;
 	height:36px;
-	margin: 0;
-	padding: 0;
 }
 
 .search-input {
-	max-width: 196px;
-	height: 32px;
-	border: 1px solid #000;
-	margin: 1px;
-	padding: 0;
+	width: 250px;
+	height: 36px;
+	border: 5px solid #918b8b;
+	margin: 0;
+	padding: 2px;
+/*
 	position: fixed;
 	top:61;
 	left: 0;
+*/
 }

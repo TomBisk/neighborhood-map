@@ -51,12 +51,16 @@ class App extends Component {
 				<div className="container">
 					<aside id="aside" className="sidebar is-hidden">
 						<Search/>
-						<PlacesList/>
-						<PlacesList/>
+						<PlacesList
+							data={this.state.data}
+						/>
+						
 						
 					</aside>
 					<div className="map">
-						<MapContainer/>
+						<MapContainer
+							state={this.state}
+						/>
 					</div>
 				</div>
 				<Footer/>

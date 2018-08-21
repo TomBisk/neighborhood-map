@@ -71,9 +71,9 @@
 
 .sidebar {
 /*	width: 200px ;*/
-	height: ;
+	height: 100%;
 	background-color: orange;
-	overflow-y: scroll;
+/*	overflow-y: scroll;*/
 	margin: 0;
 	position: relative;
 }
@@ -83,12 +83,13 @@
 }
 
 .is-shown {
-	width: 240px;
+	min-width: 250px;
 }
 
 /* ====== MAP ======*/
 
 .map {
+	flex-grow: 1;
 	width: 100%;
 	height: calc(100vh-120px);
 	position: relative;
@@ -116,7 +117,7 @@
 	}
 	
 	.is-hidden {
-		width: 240px;
+		min-width: 250px;
 	}
 }
 
