@@ -13,7 +13,9 @@ class App extends Component {
 		filteredData: [],
 		mapCenter: {lat: 50.26489189999999,
 								lng: 19.0237815},
-		error: '',
+		error: {gm: '',
+					  fs: '',
+					 	msg: 'Check the console for details.'},
 		query: '',
 		
 		activeMarker:{} ,
@@ -30,7 +32,7 @@ class App extends Component {
 		fetch(
 		 `https://api.foursquare.com/v2/venues/explore
 			?client_id=IN5TUWGGA1WEYLPY4HIWWOTFLOFYZ4A40GUDST5IJC4ZQ2K4
-			&client_secret=ZTMTGWJJZDYY4XAIMVKSD5RXLMGLUGSQTC5SSDEQYOFLJUZA
+			&client_secret=ZTMTGWJJZDYY4XAIMVKSD5RXLMGLUGSQTC5SSDEQYOFLJUZ
 			&ll=${this.state.mapCenter.lat},${this.state.mapCenter.lng}
 			&categoryId=4bf58dd8d48988d181941735
 			&radius=20000
@@ -47,7 +49,7 @@ class App extends Component {
 		
 			.catch(error => {
 				console.log('err:' + error)
-				this.setState({ error: 'Error occured during getting data from Foursquare API'})
+				this.setState({ error: {...this.state.error, fs: 'Error occured while retrieving data from Foursquare API'}})
 		})
 	}
 	
@@ -89,7 +91,6 @@ class App extends Component {
 		alert(props)
 	}	
 	
-
 	render() {
     return (
       <div className="App">
@@ -99,23 +100,28 @@ class App extends Component {
 						<Search
 							updateQuery={this.updateQuery}
 						/>
-						<PlacesList
-							filteredData={this.state.filteredData}
-							onListClicked={this.onListClicked}
-						/>
-						
-						
+						{this.state.error.fs.length !== 0 ?
+							<div className="error-msg">
+								<p className="error-info">
+									{this.state.error.fs}
+								</p>
+								<p className="error-info">
+									{this.state.error.msg}
+								</p>
+								</div>
+							:
+							<PlacesList
+								filteredData={this.state.filteredData}
+								onListClicked={this.onListClicked}
+							/>
+						}	
 					</aside>
 					<div className="map">
 						<MapContainer
 							state={this.state}
-			
 							onMarkerClick={this.onMarkerClick}
 							onMapClicked={this.onMapClicked}
 							onInfoWindowClose={this.onInfoWindowClose}
-							
-							
-							
 						/>
 					</div>
 				</div>
@@ -124,6 +130,5 @@ class App extends Component {
     );
   }
 }
-
 
 export default App;
