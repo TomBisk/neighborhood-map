@@ -1,15 +1,18 @@
 import React from 'react';
-import './PlacesListItem.css';
-import PlacesItem from './PlacesItem'
+import './PlacesList.css';
 
 
 const PlacesList = (props) => (
 	<ul className="sidebar-list">
 		{props.filteredData.map(item => (
-			<PlacesItem
+			<li 
 				key={item.venue.id}
-				placeName={item.venue.name}
-			/>
+				className="list-item"
+				onClick={props.onListClicked}
+				data-id={item.venue.id}
+			>
+				{item.venue.name}
+			</li>
 		))}
 	</ul>
 );

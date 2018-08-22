@@ -85,7 +85,9 @@ class App extends Component {
 		})
 	}
 	
-		
+	onListClicked = (props) => {
+		alert(props)
+	}	
 	
 
 	render() {
@@ -99,6 +101,7 @@ class App extends Component {
 						/>
 						<PlacesList
 							filteredData={this.state.filteredData}
+							onListClicked={this.onListClicked}
 						/>
 						
 						
@@ -110,6 +113,7 @@ class App extends Component {
 							onMarkerClick={this.onMarkerClick}
 							onMapClicked={this.onMapClicked}
 							onInfoWindowClose={this.onInfoWindowClose}
+							
 							
 							
 						/>
