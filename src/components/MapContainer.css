@@ -2,6 +2,7 @@
 
 .info-window {
 	width: 170px;
+/*	height: 300px;*/
 	padding: 10px;
 	
 }
@@ -22,8 +23,14 @@
 
 .info-address {
 	font-size: 12px;
-	padding-top: 5px;
+	padding: 5px;
 }
 
+.info-link {
+	display: block;
+	font-size: 12px;
+	border-top: 1px solid #bebcbc;
+	padding: 5px 0 0;
+}
 
 /* ====== MEDIA ====== */

@@ -54,15 +54,22 @@ export class MapContainer extends Component {
 					visible={this.props.state.showingInfoWindow}
 				>
 					<div className="info-window">
-						<h1 className="info-name">{this.props.state.selectedPlace.name}</h1>
-
-<h2 className="info-category">{this.props.state.selectedPlace.category} </h2>
-
-<p className="info-address">{this.props.state.selectedPlace.address}</p>
-
-
-						<p className="info-address">{this.props.state.selectedPlace.city}</p>
-
+						<h1 className="info-name">
+							{this.props.state.selectedPlace.name}
+						</h1>
+						<h2 className="info-category">
+							{this.props.state.selectedPlace.category}
+						</h2>
+						<p className="info-address">
+							{this.props.state.selectedPlace.address}
+						</p>
+						<p className="info-address">
+							{this.props.state.selectedPlace.city}
+						</p>
+						<a className="info-link" 
+							href={`https://foursquare.com/v/${this.props.state.selectedPlace.name}/${this.props.state.selectedPlace.id}`} 
+							target="_blank"
+						>More info at Foursquare</a>
 					</div>
         </InfoWindow>
       </Map>
