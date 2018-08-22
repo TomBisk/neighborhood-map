@@ -42,14 +42,14 @@ export class MapContainer extends Component {
 						lng: marker.venue.location.lng
 					}}
 					
-					icon={{url: (this.props.state.activeMarker.id === marker.venue.id ?  PinActive : Pin ),
+					icon={{url:  Pin ,
 						scaledSize: new window.google.maps.Size(30,40),
 					}}
 				/>
 			))}
 
         <InfoWindow 
-					onClose={this.onInfoWindowClose}
+					onClose={this.props.onInfoWindowClose}
 					marker={this.props.state.activeMarker}
 					visible={this.props.state.showingInfoWindow}
 				>

@@ -53,8 +53,8 @@ class App extends Component {
 	
 	updateQuery = query => {
 		const filteredData = this.getFiltered(query)
-		this.setState({filteredData})
-		console.log(query)
+		this.setState({filteredData, showingInfoWindow: false,})
+		
 	}
 	
 	getFiltered(query) {
@@ -66,7 +66,6 @@ class App extends Component {
 		activeMarker: marker,
 		showingInfoWindow: true,
 		selectedPlace: props,
-		
 	})
 	}
 	onMapClicked = () => {
@@ -76,9 +75,16 @@ class App extends Component {
 				activeMarker: null,
 			})
 		}
+	}
+	
+	onInfoWindowClose = () => {
+		this.setState({
+			showingInfoWindow: false,
+		})
+	}
+	
 		
 	
-	}
 
 	render() {
     return (
@@ -101,6 +107,8 @@ class App extends Component {
 			
 							onMarkerClick={this.onMarkerClick}
 							onMapClicked={this.onMapClicked}
+							onInfoWindowClose={this.onInfoWindowClose}
+							
 							
 						/>
 					</div>
