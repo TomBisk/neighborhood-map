@@ -16,7 +16,7 @@ class App extends Component {
 		error: '',
 		query: '',
 		
-		activeMarker: {},
+		activeMarker:{} ,
 		showingInfoWindow: false,
 		selectedPlace: {},
 	}
@@ -53,7 +53,8 @@ class App extends Component {
 	
 	updateQuery = query => {
 		const filteredData = this.getFiltered(query)
-		this.setState({filteredData, showingInfoWindow: false,})
+		this.setState({filteredData, showingInfoWindow: false,
+		activeMarker: null,})
 		
 	}
 	
@@ -80,6 +81,7 @@ class App extends Component {
 	onInfoWindowClose = () => {
 		this.setState({
 			showingInfoWindow: false,
+			activeMarker: null,
 		})
 	}
 	

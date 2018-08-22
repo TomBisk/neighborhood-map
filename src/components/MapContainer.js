@@ -42,7 +42,7 @@ export class MapContainer extends Component {
 						lng: marker.venue.location.lng
 					}}
 					
-					icon={{url:  Pin ,
+					icon={{url:( marker.venue.id === this.props.state.selectedPlace.id && this.props.state.activeMarker !== null ? PinActive : Pin ),
 						scaledSize: new window.google.maps.Size(30,40),
 					}}
 				/>
