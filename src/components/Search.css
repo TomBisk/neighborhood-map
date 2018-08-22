@@ -1,17 +1,25 @@
 .search-input-wrapper {
-	min-width: 250px;
+/*	min-width: 250px;*/
 	height:36px;
+	margin: 5px;
 }
 
 .search-input {
-	width: 250px;
+	width: 260px;
 	height: 36px;
-	border: 5px solid #918b8b;
+	border: 1px solid #f46e00;
+	border-radius: 2px;
 	margin: 0;
-	padding: 2px;
+	padding: 5px;
+	background-color: #e5e5e5;
 /*
 	position: fixed;
 	top:61;
 	left: 0;
 */
+}
+
+::placeholder {
+	font-size: 16px;
+	color: #4c4c4c;
 }
