@@ -2,7 +2,7 @@
 
 .sidebar-list {
 	width: 270px;
-	height: calc(100% - 36px);
+	height: calc(100% - 46px);
 	margin: 0;
 	padding: 0;
 	overflow: auto;
@@ -29,12 +29,4 @@
 .list-item-active {
 	border-color: #fff;
 	color: #fff;
-}
-
- @media (hover:hover) {
-	 .list-item:hover {
-			background-color: #f46e00;
-			transition: .2s ease;
-			color: #fff;	
-	 }
 }

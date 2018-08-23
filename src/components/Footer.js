@@ -1,5 +1,6 @@
 import React from 'react';
-import '../App.css'
+import './Footer.css'
+import '../Media.css'
 
 
 const Footer = () => (

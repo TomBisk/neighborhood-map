@@ -1,0 +1,43 @@
+/* ====== HEADER ====== */
+
+.header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  height: 60px;
+	padding-left: 50px;
+  background-color: #222;
+  color: #fff;
+}
+
+.header-menu {
+	display: initial;
+	position: fixed;
+	top: 0;
+	left: 0;
+	margin: 17px;
+	cursor: pointer;
+}
+
+.menu-icon {
+  width: 40px;
+  height: 5px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.menu-color {
+	background-color: #ddd;
+}
+
+.menu-active {
+	background-color: #fff;
+}
+
+.header-menu:hover path {
+	fill: #fff;
+}
+
+.header-title {
+  font-size: 18px;
+}

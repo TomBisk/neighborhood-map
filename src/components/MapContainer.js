@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import './MapContainer.css'
+import '../Media.css'
 import Pin from '../utils/pin.svg'
 import PinActive from '../utils/pin-active.svg'
 
 
 export class MapContainer extends Component {
-	
-	
-	
-	
-	
 	
 	render() {
     return (

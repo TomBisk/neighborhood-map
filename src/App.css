@@ -2,69 +2,12 @@
   text-align: center;
 }
 
-
 a, a:hover {
 	color:  #f46e00;
 }
 
 a:visited{
-	color: #0000ff
-}
-
-
-/* ====== HEADER ====== */
-
-
-.header {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-  height: 60px;
-  background-color: #222;
-  color: #fff;
-}
-
-.header-menu {
-	display: initial;
-	position: fixed;
-	top: 0;
-	left: 0;
-	margin: 17px;
-	cursor: pointer;
-}
-
-.menu-icon {
-  width: 40px;
-  height: 5px;
-  display: block;
-  margin-bottom: 5px;
-}
-
-.menu-color {
-	background-color: #ddd;
-}
-
-.menu-active {
-	background-color: #fff;
-}
-
-.header-menu:hover path {
-	fill: #fff;
-}
-
-.header-logo {
-  animation: header-logo-spin infinite 20s linear;
-  height: 40px;
-	padding: 10px;
-}
-
-@keyframes header-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.header-title {
-  font-size: 1.5em;
+	color: #8a8af7
 }
 
 
@@ -76,13 +19,12 @@ a:visited{
 	height: calc(100vh - 120px);
 }
 
+
 /* ====== SIDEBAR ======*/
 
 .sidebar {
-/*	width: 200px ;*/
 	height: 100%;
 	background-color: #333;
-/*	overflow-y: scroll;*/
 	margin: 0;
 	position: relative;
 }
@@ -106,9 +48,7 @@ a:visited{
 	font-size: 20px;
 	font-family: monospace;
 	color: #ff0000;
-	
 }
-
 
 
 /* ====== MAP ======*/
@@ -116,36 +56,12 @@ a:visited{
 .map {
 	flex-grow: 1;
 	width: 100%;
+	min-width: 320px;
 	height: calc(100vh-120px);
 	position: relative;
 }
 
 
-/* ====== FOOTER ====== */
-
-.footer {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 60px;
-  background-color: #222;
-  color: #fff;
-}
-
-.footer-content {
-	font-size: 14px;
-}
-
-/* ====== @MEDIA ====== */
 
 
-@media screen and (min-width: 1024px) {
-	.header-menu {
-		display: none;
-	}
-	
-	.is-hidden {
-		min-width: 270px;
-	}
-}
 

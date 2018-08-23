@@ -7,7 +7,7 @@ const Search = (props) => (
 		<input 
 			className="search-input"
 			type="text" 
-			placeholder="Search by..."
+			placeholder="Search by name or category..."
 			onChange={(event) => props.updateQuery(event.target.value)}
 		/>
 	</div>

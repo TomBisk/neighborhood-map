@@ -1,4 +1,4 @@
-/* ====== INFO WINDOW ======*/
+/* ====== MAP INFO WINDOW ====== */
 
 .info-window {
 	width: 170px;
@@ -13,24 +13,25 @@
 	
 }
 
+.info-category,
+info-address,
+info-link {
+		font-size: 12px;
+}
+
 .info-category {
-	font-size: 12px;
 	border-top: 1px solid #bebcbc;
 	border-bottom: 1px solid #bebcbc;
 	padding: 5px;
-	
 }
 
 .info-address {
-	font-size: 12px;
 	padding: 5px;
 }
 
 .info-link {
 	display: block;
-	font-size: 12px;
 	border-top: 1px solid #bebcbc;
 	padding: 5px 0 0;
+	font-weight: bold;
 }
-
-/* ====== MEDIA ====== */

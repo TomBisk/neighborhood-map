@@ -1,5 +1,6 @@
 import React from 'react';
 import './PlacesList.css';
+import '../Media.css'
 
 
 const PlacesList = (props) => (

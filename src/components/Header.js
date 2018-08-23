@@ -1,16 +1,14 @@
 import React from 'react';
-import '../App.css'
+import './Header.css'
+import '../Media.css'
 import logo from '../utils/main-logo-icon.svg'
 
 
-
 const Header = props => {
-//	const menu = document.getElementById("menu");
 	const sidebar = document.getElementsByTagName("aside");
 	const menuIcon = document.getElementsByClassName("menu-icon");
-	const media = window.matchMedia("screen and (min-width: 1024px)");
+	const media = window.matchMedia("screen and (min-width: 768px)");
 
-	
 	media.addListener(function(media) {
 		if(media.matches) {
 			sidebar[0].classList.add("is-shown");
@@ -38,7 +36,6 @@ const Header = props => {
 				<span className="menu-icon menu-color"></span>
 				<span className="menu-icon menu-color"></span>
 			</div>
-			<img src={logo} className="header-logo" alt="logo"/>
 			<h1 className="header-title">Visit museums in Silesian Metropolis</h1>
 		</header>
 	)
