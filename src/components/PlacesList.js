@@ -7,8 +7,8 @@ const PlacesList = (props) => (
 		{props.filteredData.map(item => (
 			<li 
 				key={item.venue.id}
-				className="list-item"
-				onClick={props.onListClicked}
+				className={(props.activeMarker && item.venue.id === props.activeMarker.id) ? "list-item list-item-active" : "list-item"}
+				onClick={() => {props.onListClicked}}
 				data-id={item.venue.id}
 			>
 				{item.venue.name}

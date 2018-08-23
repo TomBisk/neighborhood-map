@@ -26,6 +26,11 @@
 	color: #f46e00
 }
 
+.list-item-active {
+	border-color: #fff;
+	color: #fff;
+}
+
 .list-item:hover {
 	background-color: #f46e00;
 	transition: .2s ease;
