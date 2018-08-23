@@ -13,8 +13,13 @@ class App extends Component {
 	state = {
 		data: [],
 		filteredData: [],
-		mapCenter: {lat: 50.26489189999999,
-								lng: 19.0237815},
+		mapCenter: {lat: 50.297488,
+								lng: 18.954573},
+		zoom: 10,
+		
+		mapCurrent: {lat: 50.297488,
+								 lng: 18.954573,},
+		
 		error: {gm: '',
 					  fs: '',
 					 	msg: 'Check the console for details.'},
@@ -65,18 +70,38 @@ class App extends Component {
 		return this.state.data.filter(item => item.venue.name.toLowerCase().includes(query.toLowerCase()) || item.venue.categories[0].name.toLowerCase().includes(query.toLowerCase()))
 	}
 	
+	changeZoom = () => {
+//		const newLat = latlng.position.lat
+//		console.log(newLat)
+//		const newLng = latlng.position.lng
+		
+			this.setState({
+				zoom: 12,
+				mapCurrent: {...this.state.mapCurrent,
+					lat: this.state.selectedPlace.position.lat,
+					lng: this.state.selectedPlace.position.lng}
+				
+			})
+		
+	}
+
 	onMarkerClick = (props, marker) => {
 		this.setState({
 		activeMarker: marker,
 		showingInfoWindow: true,
 		selectedPlace: props,
 	})
+		this.changeZoom()
 	}
 	onMapClicked = () => {
 		if (this.state.showingInfoWindow) {
 			this.setState({
 				showingInfoWindow: false,
 				activeMarker: null,
+				mapCurrent: {...this.state.mapCurrent,
+					lat: this.state.mapCenter.lat,
+					lng: this.state.mapCenter.lng},
+				zoom: 10,
 			})
 		}
 	}
@@ -85,6 +110,11 @@ class App extends Component {
 		this.setState({
 			showingInfoWindow: false,
 			activeMarker: null,
+				mapCurrent: {...this.state.mapCurrent,
+					lat: this.state.mapCenter.lat,
+					lng: this.state.mapCenter.lng},
+				zoom: 10,
+		
 		})
 	}
 	
@@ -98,15 +128,13 @@ addMarker = (marker) => {
 	
 	onListClicked = (item) => {
 		const listClicked = this.allMarkers.filter(marker => marker.marker.id === item.venue.id)
-		console.log(this.allMarkers)
-		
-		console.log(listClicked);
+		console.log(listClicked[0].props);
 		this.setState({
 			activeMarker: listClicked[0].marker,
 			showingInfoWindow: true,
-			selectedPlace: listClicked[0].marker,
+			selectedPlace: listClicked[0].props,
 		})
-		 
+		this.changeZoom()
 	}	
 	
 	render() {

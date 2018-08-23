@@ -17,10 +17,15 @@ export class MapContainer extends Component {
       <Map 
 				google={this.props.google}
 				initialCenter={{
-					lat: 50.26489189999999,
-					lng: 19.0237815,
+					lat: 50.297488,
+					lng: 18.954573,
 				}}
-				zoom={11}
+				center={{
+					lat: this.props.state.mapCurrent.lat,
+					lng: this.props.state.mapCurrent.lng,
+				}}
+			
+				zoom={this.props.state.zoom}
 				onClick={this.props.onMapClicked}
 			>
 				{this.props.state.filteredData.map(marker => (
