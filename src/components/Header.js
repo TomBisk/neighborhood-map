@@ -25,12 +25,8 @@ const Header = props => {
 				id="menu" 
 				className="header-menu"
 				aria-label="toggle menu"
-				onClick={() => {
-					sidebar[0].classList.toggle("is-shown");
-					for (let i = 0; i < menuIcon.length; i++) {
-						menuIcon[i].classList.toggle("menu-active");	 
-					}
-				}}
+				onClick={props.onMenuClicked}
+				
 			>
 				<span className="menu-icon menu-color"></span>
 				<span className="menu-icon menu-color"></span>

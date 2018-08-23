@@ -9,7 +9,11 @@ import Footer from './components/Footer';
 class App extends Component {
   
 	allMarkers = [];
-	
+	sidebar = document.getElementsByTagName("aside");
+
+	menuIcon = document.getElementsByClassName("menu-icon");
+		
+
 	state = {
 		data: [],
 		filteredData: [],
@@ -24,7 +28,8 @@ class App extends Component {
 					  fs: '',
 					 	msg: 'Check the console for details.'},
 		query: '',
-		
+		sidebarState: false,
+		screenRes: false,
 		activeMarker:null ,
 		showingInfoWindow: false,
 		selectedPlace: {},
@@ -70,6 +75,52 @@ class App extends Component {
 		return this.state.data.filter(item => item.venue.name.toLowerCase().includes(query.toLowerCase()) || item.venue.categories[0].name.toLowerCase().includes(query.toLowerCase()))
 	}
 	
+
+/*	const mediaMobile = window.matchMedia("screen and (max-width: 767px)");
+		
+		mediaMobile.addListener(function(mediaMobile) {
+		if(mediaMobile.matches) {
+			console.log('tak')
+			setState({
+				screenSize: true,
+			})
+		} else {
+			console.log('nie')
+			
+			setState({
+				screenSize: true,
+			})
+		}
+	})*/
+
+
+	onMenuClicked = () => {
+		
+		if (this.state.sidebarState  ) {
+			this.sidebar[0].classList.toggle("is-shown");
+			for (let i = 0; i < this.menuIcon.length; i++) {
+				this.menuIcon[i].classList.toggle("menu-active");
+			}
+			this.setState({
+				sidebarState: false,
+			})
+		} else if (!this.state.sidebarState  ){
+				this.sidebar[0].classList.toggle("is-shown");
+				for (let i = 0; i < this.menuIcon.length; i++) {
+					this.menuIcon[i].classList.toggle("menu-active");
+				}
+				this.setState({
+					sidebarState: true,
+				})
+		} else{
+			
+		}
+			
+	}
+
+	
+	
+
 	changeZoom = () => {
 //		const newLat = latlng.position.lat
 //		console.log(newLat)
@@ -130,19 +181,27 @@ addMarker = (marker) => {
 		const listClicked = this.allMarkers.filter(marker => marker.marker.id === item.venue.id)
 		console.log(listClicked[0].props);
 		this.setState({
+			sidebarState: false,
 			activeMarker: listClicked[0].marker,
 			showingInfoWindow: true,
 			selectedPlace: listClicked[0].props,
 		})
 		this.changeZoom()
+		this.onMenuClicked()
 	}	
 	
 	render() {
+		
+
+		
     return (
       <div className="App">
-        <Header/>
+        <Header
+					sidebarState={this.state.sidebarState}
+					onMenuClicked={this.onMenuClicked}
+				/>
 				<div className="container">
-					<aside id="aside" className="sidebar is-hidden">
+					<aside id="sidebar" className="sidebar is-hidden">
 						<Search
 							updateQuery={this.updateQuery}
 						/>
