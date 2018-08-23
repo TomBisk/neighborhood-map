@@ -31,8 +31,10 @@
 	color: #fff;
 }
 
-html.no-touch .list-item:hover {
-	background-color: #f46e00;
-	transition: .2s ease;
-	color: #fff;	
+ @media (hover:hover) {
+	 .list-item:hover {
+			background-color: #f46e00;
+			transition: .2s ease;
+			color: #fff;	
+	 }
 }

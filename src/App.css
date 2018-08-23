@@ -3,6 +3,15 @@
 }
 
 
+a, a:hover {
+	color:  #f46e00;
+}
+
+a:visited{
+	color: #0000ff
+}
+
+
 /* ====== HEADER ====== */
 
 
@@ -123,6 +132,9 @@
   color: #fff;
 }
 
+.footer-content {
+	font-size: 14px;
+}
 
 /* ====== @MEDIA ====== */
 

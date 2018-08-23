@@ -39,7 +39,7 @@ const Header = props => {
 				<span className="menu-icon menu-color"></span>
 			</div>
 			<img src={logo} className="header-logo" alt="logo"/>
-			<h1 className="header-title">Neighborhood Map</h1>
+			<h1 className="header-title">Visit museums in Silesian Metropolis</h1>
 		</header>
 	)
 }
