@@ -14,8 +14,9 @@
 
 .list-item {
 	display: block;
+	box-sizing: border-box;
 	margin: 5px ;
-	max-width: 260px;
+	width: 96%;
 	height: auto;
 	border: 1px solid #f46e00;
 	border-radius: 2px;
@@ -23,6 +24,7 @@
 	background-color: #141414;
 	transition: .2s ease;
 	cursor: pointer;
+	font-size: 16px;
 	color: #f46e00
 }
 

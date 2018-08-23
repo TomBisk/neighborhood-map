@@ -1,7 +1,6 @@
 import React from 'react';
 import './Header.css'
 import '../Media.css'
-import logo from '../utils/main-logo-icon.svg'
 
 
 const Header = props => {
@@ -22,9 +21,10 @@ const Header = props => {
 	
 	return (
 		<header className="header">
-			<div 
+			<button 
 				id="menu" 
 				className="header-menu"
+				aria-label="toggle menu"
 				onClick={() => {
 					sidebar[0].classList.toggle("is-shown");
 					for (let i = 0; i < menuIcon.length; i++) {
@@ -35,8 +35,8 @@ const Header = props => {
 				<span className="menu-icon menu-color"></span>
 				<span className="menu-icon menu-color"></span>
 				<span className="menu-icon menu-color"></span>
-			</div>
-			<h1 className="header-title">Visit museums in Silesian Metropolis</h1>
+			</button>
+			<h1 className="header-title" tabIndex="1">Visit museums in Silesian Metropolis</h1>
 		</header>
 	)
 }

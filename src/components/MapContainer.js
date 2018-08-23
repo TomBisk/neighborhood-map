@@ -48,26 +48,27 @@ export class MapContainer extends Component {
 			))}
 
         <InfoWindow 
+					
 					onClose={this.props.onInfoWindowClose}
 					marker={this.props.state.activeMarker}
 					visible={this.props.state.showingInfoWindow}
 				>
-					<div className="info-window">
-						<h1 className="info-name">
+					<div className="info-window" aria-label="Place information" tabIndex="0">
+						<h1 className="info-name"  tabIndex="0" aria-label={ 'objects name' + this.props.state.selectedPlace.name}>
 							{this.props.state.selectedPlace.name}
 						</h1>
-						<h2 className="info-category">
+						<h2 className="info-category" tabIndex="0" aria-label={'objects category' + this.props.state.selectedPlace.category}>
 							{this.props.state.selectedPlace.category}
 						</h2>
-						<p className="info-address">
+						<p className="info-address" tabIndex="0" aria-label={'address' + this.props.state.selectedPlace.address}>
 							{this.props.state.selectedPlace.address}
 						</p>
-						<p className="info-address">
+						<p className="info-address" tabIndex="0" aria-label={this.props.state.selectedPlace.city}>
 							{this.props.state.selectedPlace.city}
 						</p>
 						<a className="info-link" 
 							href={`https://foursquare.com/v/${this.props.state.selectedPlace.name}/${this.props.state.selectedPlace.id}`} 
-							target="_blank"
+							target="_blank" rel="noopener noreferrer"
 						>More info at Foursquare</a>
 					</div>
         </InfoWindow>

@@ -147,7 +147,7 @@ addMarker = (marker) => {
 							updateQuery={this.updateQuery}
 						/>
 						{this.state.error.fs.length !== 0 ?
-							<div className="error-msg">
+							<div className="error-msg" role="alert" aria-label="error message">
 								<p className="error-info">
 									{this.state.error.fs}
 								</p>
@@ -163,7 +163,12 @@ addMarker = (marker) => {
 							/>
 						}	
 					</aside>
-					<div className="map">
+					<div className="map"
+						role="application"
+						aria-label="map with locations"
+						tabIndex="-1"
+					>
+			
 						<MapContainer
 							state={this.state}
 							addMarker={this.addMarker}
