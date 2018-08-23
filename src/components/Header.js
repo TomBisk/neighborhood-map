@@ -8,7 +8,7 @@ const Header = props => {
 //	const menu = document.getElementById("menu");
 	const sidebar = document.getElementsByTagName("aside");
 	const menuIcon = document.getElementsByClassName("menu-icon");
-	const media = window.matchMedia("screen and (min-width: 1200px)");
+	const media = window.matchMedia("screen and (min-width: 1024px)");
 
 	
 	media.addListener(function(media) {
