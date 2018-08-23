@@ -24,19 +24,17 @@ export class MapContainer extends Component {
 				onClick={this.props.onMapClicked}
 			>
 				{this.props.state.filteredData.map(marker => (
-		
+				
         <Marker 
 					key={marker.venue.id}
 					onClick={this.props.onMarkerClick}
-          
 					id={marker.venue.id}
 					title={marker.venue.name}
 					name={marker.venue.name}
 					category={marker.venue.categories[0].name}
 					address={marker.venue.location.formattedAddress[0]}
 					city={marker.venue.location.formattedAddress[1]}
-					photos={marker.venue.photos}
-			
+					ref={this.props.addMarker}
 					position={{
 						lat: marker.venue.location.lat,
 						lng: marker.venue.location.lng

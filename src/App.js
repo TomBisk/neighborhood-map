@@ -8,6 +8,8 @@ import Footer from './components/Footer';
 
 class App extends Component {
   
+	allMarkers = [];
+	
 	state = {
 		data: [],
 		filteredData: [],
@@ -18,7 +20,7 @@ class App extends Component {
 					 	msg: 'Check the console for details.'},
 		query: '',
 		
-		activeMarker:{} ,
+		activeMarker:null ,
 		showingInfoWindow: false,
 		selectedPlace: {},
 	}
@@ -32,7 +34,7 @@ class App extends Component {
 		fetch(
 		 `https://api.foursquare.com/v2/venues/explore
 			?client_id=IN5TUWGGA1WEYLPY4HIWWOTFLOFYZ4A40GUDST5IJC4ZQ2K4
-			&client_secret=ZTMTGWJJZDYY4XAIMVKSD5RXLMGLUGSQTC5SSDEQYOFLJUZ
+			&client_secret=ZTMTGWJJZDYY4XAIMVKSD5RXLMGLUGSQTC5SSDEQYOFLJUZA
 			&ll=${this.state.mapCenter.lat},${this.state.mapCenter.lng}
 			&categoryId=4bf58dd8d48988d181941735
 			&radius=20000
@@ -42,7 +44,6 @@ class App extends Component {
 			.then(response => response.json())
 			.then(res => {
 			  const data = res.response.groups[0].items
-				console.log(data)
 				this.setState({data})
 				this.setState({filteredData: data})
 		})
@@ -87,8 +88,25 @@ class App extends Component {
 		})
 	}
 	
-	onListClicked = (props) => {
-		alert(props)
+	
+addMarker = (marker) => {
+	if (marker) {
+		this.allMarkers.push(marker);
+	}
+}
+	
+	
+	onListClicked = (item) => {
+		const listClicked = this.allMarkers.filter(marker => marker.marker.id === item.venue.id)
+		console.log(this.allMarkers)
+		
+		console.log(listClicked);
+		this.setState({
+			activeMarker: listClicked[0].marker,
+			showingInfoWindow: true,
+			selectedPlace: listClicked[0].marker,
+		})
+		 
 	}	
 	
 	render() {
@@ -112,6 +130,7 @@ class App extends Component {
 							:
 							<PlacesList
 								filteredData={this.state.filteredData}
+								activeMarker={this.state.activeMarker}
 								onListClicked={this.onListClicked}
 							/>
 						}	
@@ -119,6 +138,7 @@ class App extends Component {
 					<div className="map">
 						<MapContainer
 							state={this.state}
+							addMarker={this.addMarker}
 							onMarkerClick={this.onMarkerClick}
 							onMapClicked={this.onMapClicked}
 							onInfoWindowClose={this.onInfoWindowClose}

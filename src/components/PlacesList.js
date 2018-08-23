@@ -8,8 +8,7 @@ const PlacesList = (props) => (
 			<li 
 				key={item.venue.id}
 				className={(props.activeMarker && item.venue.id === props.activeMarker.id) ? "list-item list-item-active" : "list-item"}
-				onClick={() => {props.onListClicked}}
-				data-id={item.venue.id}
+				onClick={() => {props.onListClicked(item)}}
 			>
 				{item.venue.name}
 			</li>
