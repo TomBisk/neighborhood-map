@@ -53,7 +53,7 @@ class App extends Component {
   		this.setState({ error: {...this.state.error, gm: 'Error occured while retrieving data from Google Maps'}})
 		const mapContainer = document.querySelector('.map');
 		mapContainer.innerHTML = `<div 
-								class="error-msg"
+								class="error-msg error-pos"
 								tabindex="1"
 								role="alert"
 								aria-label="error message"
@@ -183,10 +183,13 @@ class App extends Component {
 	
 /**
  * When list item clicked, it "clicks" proper marker 
- * and call to hide sidebar on mobile
+ * and call to hide sidebar on mobile.
+ * It blocks 'marker click' when Google Maps retrieving fails 
  */
 	onListClick = (item) => {
+		{this.state.error.gm.length === 0 ?
 		document.querySelector(`[title="${item}"]`).click()
+		 :''}
 		this.onMenuClick()
 	}	
 	
@@ -226,6 +229,7 @@ class App extends Component {
 								filteredData={this.state.filteredData}
 								activeMarker={this.state.activeMarker}
 								onListClick={this.onListClick}
+								error={this.state.error.gm}
 							/>
 						}	
 					</aside>

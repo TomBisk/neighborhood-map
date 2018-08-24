@@ -44,8 +44,16 @@ a:visited{
 
 .error-msg {
 	width: 250px;
+	height: 177px;
 	margin: 20px auto;
 	border: 1px solid #ff0000;
+	background-color: #fff;
+}
+
+.error-pos {
+	position: relative;
+	margin-left: auto;
+	margin-top: calc(100vh - 320px);
 }
 
 .error-info {

@@ -9,7 +9,6 @@ const PlacesList = (props) => (
 	<ol className="sidebar-list" 
 			aria-label="List of museums"
 	>
-			
 		{props.filteredData.map(item => (
 			<li 
 				key={item.venue.id}
