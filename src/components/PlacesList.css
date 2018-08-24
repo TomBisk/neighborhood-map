@@ -32,3 +32,14 @@
 	border-color: #fff;
 	color: #fff;
 }
+
+/* ====== @MEDIA ====== */
+
+@media (hover:hover) {
+	
+	 .list-item:hover {
+			background-color: #f46e00;
+			transition: .2s ease;
+			color: #fff;	
+	 }
+}

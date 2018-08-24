@@ -1,8 +1,10 @@
 import React from 'react';
 import './PlacesList.css';
-import '../Media.css'
 
 
+/** List to present fetched and filtered places. Buttons
+ * allow to select related location on the map
+ */
 const PlacesList = (props) => (
 	<ol className="sidebar-list" 
 			aria-label="List of museums"
