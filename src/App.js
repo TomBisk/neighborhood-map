@@ -76,24 +76,6 @@ class App extends Component {
 	}
 	
 
-/*	const mediaMobile = window.matchMedia("screen and (max-width: 767px)");
-		
-		mediaMobile.addListener(function(mediaMobile) {
-		if(mediaMobile.matches) {
-			console.log('tak')
-			setState({
-				screenSize: true,
-			})
-		} else {
-			console.log('nie')
-			
-			setState({
-				screenSize: true,
-			})
-		}
-	})*/
-
-
 	onMenuClicked = () => {
 		
 		if (this.state.sidebarState  ) {
@@ -118,23 +100,6 @@ class App extends Component {
 			
 	}
 
-	
-	
-
-	changeZoom = () => {
-//		const newLat = latlng.position.lat
-//		console.log(newLat)
-//		const newLng = latlng.position.lng
-		
-			this.setState({
-				zoom: 12,
-				mapCurrent: {...this.state.mapCurrent,
-					lat: this.state.selectedPlace.position.lat,
-					lng: this.state.selectedPlace.position.lng}
-				
-			})
-		
-	}
 
 	onMarkerClick = (props, marker) => {
 		this.setState({
@@ -142,8 +107,9 @@ class App extends Component {
 		showingInfoWindow: true,
 		selectedPlace: props,
 	})
-		this.changeZoom()
+	
 	}
+	
 	onMapClicked = () => {
 		if (this.state.showingInfoWindow) {
 			this.setState({
@@ -161,11 +127,6 @@ class App extends Component {
 		this.setState({
 			showingInfoWindow: false,
 			activeMarker: null,
-				mapCurrent: {...this.state.mapCurrent,
-					lat: this.state.mapCenter.lat,
-					lng: this.state.mapCenter.lng},
-				zoom: 10,
-		
 		})
 	}
 	
@@ -178,22 +139,12 @@ addMarker = (marker) => {
 	
 	
 	onListClicked = (item) => {
-		const listClicked = this.allMarkers.filter(marker => marker.marker.id === item.venue.id)
-		console.log(listClicked[0].props);
-		this.setState({
-			sidebarState: false,
-			activeMarker: listClicked[0].marker,
-			showingInfoWindow: true,
-			selectedPlace: listClicked[0].props,
-		})
-		this.changeZoom()
+		document.querySelector(`[title="${item}"]`).click()
 		this.onMenuClicked()
 	}	
 	
 	render() {
-		
-
-		
+	
     return (
       <div className="App">
         <Header
