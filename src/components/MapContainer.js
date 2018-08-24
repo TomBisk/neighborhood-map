@@ -15,7 +15,7 @@ export class MapContainer extends Component {
 		const { activeMarker, filteredData, mapCenter, selectedPlace, showingInfoWindow, zoom } = this.props.state
 		const { google, onInfoWindowClose, onMapClick, onMarkerClick,  } = this.props
 		
-    return (
+    return (				
       <Map 
 				google={google}
 				initialCenter={{

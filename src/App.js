@@ -9,6 +9,8 @@ import PlacesList from './components/PlacesList';
 import Search from './components/Search';
 
 
+
+
 class App extends Component {
   	
 
@@ -23,9 +25,9 @@ class App extends Component {
 		zoom: 10,
 		
 		// To handling API loading error
-		error: {gm: '',
-					  fs: '',
-					 	msg: 'Check the console for details.'},
+		error: {gm: '', // Google Maps
+					  fs: '', // Foursquare
+					 	msg: 'Check the console for details.'}, //additional message
 		
 		// To handling queries in search input
 		query: '',
@@ -46,6 +48,24 @@ class App extends Component {
 
 	componentDidMount() {
 		this.getData();
+// Error handling when map loading fails
+		window.gm_authFailure = () => {
+  		this.setState({ error: {...this.state.error, gm: 'Error occured while retrieving data from Google Maps'}})
+		const mapContainer = document.querySelector('.map');
+		mapContainer.innerHTML = `<div 
+								class="error-msg"
+								tabindex="1"
+								role="alert"
+								aria-label="error message"
+							>
+								<p class="error-info">
+									${this.state.error.gm}
+								</p>
+								<p class="error-info">
+									${this.state.error.msg}
+								</p>
+							</div>`
+		}
 	}
 	
 /**
@@ -73,7 +93,7 @@ class App extends Component {
 				this.setState({data})
 				this.setState({filteredData: data})
 		})
-		
+	// Error handling when retrieving data fails	
 			.catch(error => {
 				console.log('err:' + error)
 				this.setState({ error: {...this.state.error, fs: 'Error occured while retrieving data from Foursquare API'}})
@@ -190,6 +210,7 @@ class App extends Component {
 						{this.state.error.fs.length !== 0 ?
 							<div 
 								className="error-msg" 
+								tabIndex="1"
 								role="alert" 
 								aria-label="error message"
 							>
