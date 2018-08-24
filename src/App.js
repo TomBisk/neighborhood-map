@@ -1,55 +1,71 @@
 import React, { Component } from 'react';
 import './App.css';
-import Header from './components/Header';
-import Search from './components/Search';
-import PlacesList from './components/PlacesList';
-import MapContainer from './components/MapContainer';
+
+// Import components
 import Footer from './components/Footer';
+import Header from './components/Header';
+import MapContainer from './components/MapContainer';
+import PlacesList from './components/PlacesList';
+import Search from './components/Search';
 
 
 class App extends Component {
-  
-	allMarkers = [];
-	sidebar = document.getElementsByTagName("aside");
-	menuIcon = document.getElementsByClassName("menu-icon");
-		
+  	
 
 	state = {
+		// To store fetched data
 		data: [],
 		filteredData: [],
+		
+		// Default map center and zoom position
 		mapCenter: {lat: 50.297488,
 								lng: 18.954573},
 		zoom: 10,
 		
-		mapCurrent: {lat: 50.297488,
-								 lng: 18.954573,},
-		
+		// To handling API loading error
 		error: {gm: '',
 					  fs: '',
 					 	msg: 'Check the console for details.'},
+		
+		// To handling queries in search input
 		query: '',
+		
+		// State of sidebar to auto show/hide sidebar/menu on mobiles 
 		sidebarState: false,
-		screenRes: false,
-		activeMarker:null ,
-		showingInfoWindow: false,
+		
+		// To set active and selected marker an show info window
+		activeMarker: {} ,
 		selectedPlace: {},
+		showingInfoWindow: false,
 	}
 	
+	// To handling menu's auto on/off on mobiles
+	sidebar = document.getElementsByTagName("aside");
+	menuIcon = document.getElementsByClassName("menu-icon");
 	
+
 	componentDidMount() {
 		this.getData();
 	}
 	
+/**
+ * To get data from Foursqare API with defined specific parameters and error handling:
+ * ll - ap center coords
+ * categoryId - category of objects
+ * radius - area radius [in meters] from map center
+ * limit - limit of fetched objects
+ * v - date of data update (YYYYMMDD)
+ */
 	getData = () => {
 		fetch(
 		 `https://api.foursquare.com/v2/venues/explore
 			?client_id=IN5TUWGGA1WEYLPY4HIWWOTFLOFYZ4A40GUDST5IJC4ZQ2K4
 			&client_secret=ZTMTGWJJZDYY4XAIMVKSD5RXLMGLUGSQTC5SSDEQYOFLJUZA
-			&ll=${this.state.mapCenter.lat},${this.state.mapCenter.lng}
+			&ll=${this.state.mapCenter.lat},${this.state.mapCenter.lng} 
 			&categoryId=4bf58dd8d48988d181941735
-			&radius=20000
-			&limit=20
-			&v=20180818`
+			&radius=20000  
+			&limit=20 
+			&v=20180818`  
 		)
 			.then(response => response.json())
 			.then(res => {
@@ -64,6 +80,10 @@ class App extends Component {
 		})
 	}
 	
+/**
+ * To filter data by input text
+ * (based on react course at https://typeofweb.com/ (PL)
+ */
 	updateQuery = query => {
 		const filteredData = this.getFiltered(query)
 		this.setState({filteredData, showingInfoWindow: false,
@@ -76,9 +96,14 @@ class App extends Component {
 	}
 	
 
-	onMenuClicked = () => {
-		
-		if (this.state.sidebarState  ) {
+/**
+ * It checks sidebar/menu state, shows/hides it and changes menu icon.
+ * Used to switch sidebar visibility by button clicking and to hiding
+ * list when item selected on mobile and showing list when info window closed
+ * or map clicked. It changes proper classes for sidbar and button elements
+ */
+	onMenuClick = () => {
+		if (this.state.sidebarState) {
 			this.sidebar[0].classList.toggle("is-shown");
 			for (let i = 0; i < this.menuIcon.length; i++) {
 				this.menuIcon[i].classList.toggle("menu-active");
@@ -86,7 +111,7 @@ class App extends Component {
 			this.setState({
 				sidebarState: false,
 			})
-		} else if (!this.state.sidebarState  ){
+		} else if (!this.state.sidebarState) {
 				this.sidebar[0].classList.toggle("is-shown");
 				for (let i = 0; i < this.menuIcon.length; i++) {
 					this.menuIcon[i].classList.toggle("menu-active");
@@ -94,84 +119,92 @@ class App extends Component {
 				this.setState({
 					sidebarState: true,
 				})
-		} else{
-			
-		}
-			
+		} 	
 	}
 
-
+/**
+ * To get properties of clicked marker and set them to proper states
+ * and show info window
+ */
 	onMarkerClick = (props, marker) => {
 		this.setState({
-		activeMarker: marker,
-		showingInfoWindow: true,
-		selectedPlace: props,
-	})
-	
+			activeMarker: marker,
+			selectedPlace: props,
+			showingInfoWindow: true,
+		})
 	}
 	
-	onMapClicked = () => {
+/**
+ * To close oened info window and unactive last marker
+ * when map clicked. It opens sidebar on mobile
+ */
+	onMapClick = () => {
 		if (this.state.showingInfoWindow) {
 			this.setState({
 				showingInfoWindow: false,
 				activeMarker: null,
-				mapCurrent: {...this.state.mapCurrent,
-					lat: this.state.mapCenter.lat,
-					lng: this.state.mapCenter.lng},
-				zoom: 10,
 			})
-			this.onMenuClicked()
+			this.onMenuClick()
 		}
 	}
 	
+/**
+ * When info window is closed (by X button) it 
+ * change the state of info window, remove 
+ * active marker and shows sidebar on mobile
+ */	
 	onInfoWindowClose = () => {
 		this.setState({
 			showingInfoWindow: false,
 			activeMarker: null,
 		})
-		this.onMenuClicked()
+		this.onMenuClick()
 	}
 	
-	
-addMarker = (marker) => {
-	if (marker) {
-		this.allMarkers.push(marker);
-	}
-}
-	
-	
-	onListClicked = (item) => {
+/**
+ * When list item clicked, it "clicks" proper marker 
+ * and call to hide sidebar on mobile
+ */
+	onListClick = (item) => {
 		document.querySelector(`[title="${item}"]`).click()
-		this.onMenuClicked()
+		this.onMenuClick()
 	}	
 	
-	render() {
 	
+	render() {
+		
     return (
       <div className="App">
         <Header
 					sidebarState={this.state.sidebarState}
-					onMenuClicked={this.onMenuClicked}
+					onMenuClick={this.onMenuClick}
 				/>
 				<div className="container">
-					<aside id="sidebar" className="sidebar is-hidden">
+					<aside 
+						id="sidebar" 
+						className="sidebar is-hidden"
+					>
 						<Search
 							updateQuery={this.updateQuery}
 						/>
 						{this.state.error.fs.length !== 0 ?
-							<div className="error-msg" role="alert" aria-label="error message">
+							<div 
+								className="error-msg" 
+								role="alert" 
+								aria-label="error message"
+							>
 								<p className="error-info">
 									{this.state.error.fs}
 								</p>
 								<p className="error-info">
 									{this.state.error.msg}
 								</p>
-								</div>
+							</div>
 							:
 							<PlacesList
 								filteredData={this.state.filteredData}
 								activeMarker={this.state.activeMarker}
-								onListClicked={this.onListClicked}
+								onListClick={this.onListClick}
 							/>
 						}	
 					</aside>
@@ -180,12 +213,10 @@ addMarker = (marker) => {
 						aria-label="map with locations"
 						tabIndex="-1"
 					>
-			
 						<MapContainer
 							state={this.state}
-							addMarker={this.addMarker}
 							onMarkerClick={this.onMarkerClick}
-							onMapClicked={this.onMapClicked}
+							onMapClick={this.onMapClick}
 							onInfoWindowClose={this.onInfoWindowClose}
 						/>
 					</div>

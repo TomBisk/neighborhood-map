@@ -25,7 +25,7 @@ const Header = props => {
 				id="menu" 
 				className="header-menu"
 				aria-label="toggle menu"
-				onClick={props.onMenuClicked}
+				onClick={props.onMenuClick}
 				
 			>
 				<span className="menu-icon menu-color"></span>

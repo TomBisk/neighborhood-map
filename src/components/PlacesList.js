@@ -16,7 +16,7 @@ const PlacesList = (props) => (
 					aria-label={item.venue.name}
 					tabIndex="0"
 					className={(props.activeMarker && item.venue.id === props.activeMarker.id) ? "list-item list-item-active" : "list-item"}
-					onClick={() => {props.onListClicked(item.venue.name)}}
+					onClick={() => {props.onListClick(item.venue.name)}}
 				>
 					{item.venue.name}
 				</button>

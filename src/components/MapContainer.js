@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import components
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import './MapContainer.css'
 import '../Media.css'
@@ -17,12 +18,12 @@ export class MapContainer extends Component {
 					lng: 18.954573,
 				}}
 				center={{
-					lat: this.props.state.mapCurrent.lat,
-					lng: this.props.state.mapCurrent.lng,
+					lat: this.props.state.mapCenter.lat,
+					lng: this.props.state.mapCenter.lng,
 				}}
 			
 				zoom={this.props.state.zoom}
-				onClick={this.props.onMapClicked}
+				onClick={this.props.onMapClick}
 			>
 				{this.props.state.filteredData.map(marker => (
 				
