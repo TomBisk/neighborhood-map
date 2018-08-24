@@ -6,11 +6,11 @@ import PlacesList from './components/PlacesList';
 import MapContainer from './components/MapContainer';
 import Footer from './components/Footer';
 
+
 class App extends Component {
   
 	allMarkers = [];
 	sidebar = document.getElementsByTagName("aside");
-
 	menuIcon = document.getElementsByClassName("menu-icon");
 		
 
@@ -120,6 +120,7 @@ class App extends Component {
 					lng: this.state.mapCenter.lng},
 				zoom: 10,
 			})
+			this.onMenuClicked()
 		}
 	}
 	
@@ -128,6 +129,7 @@ class App extends Component {
 			showingInfoWindow: false,
 			activeMarker: null,
 		})
+		this.onMenuClicked()
 	}
 	
 	
