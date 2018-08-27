@@ -69,7 +69,6 @@ a:visited{
 .map {
 	flex-grow: 1;
 	width: 100%;
-	min-width: 320px;
 	height: calc(100vh-120px);
 	position: relative;
 }
