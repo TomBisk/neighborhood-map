@@ -152,10 +152,13 @@ class App extends Component {
 			selectedPlace: props,
 			showingInfoWindow: true,
 		})
+		if (this.state.sidebarState) {
+			this.onMenuClick()
+		}
 	}
 	
 /**
- * To close oened info window and unactive last marker
+ * To close opened info window and unactive last marker
  * when map clicked. It opens sidebar on mobile
  */
 	onMapClick = () => {
@@ -164,6 +167,8 @@ class App extends Component {
 				showingInfoWindow: false,
 				activeMarker: null,
 			})
+		}
+		if (!this.state.sidebarState) {
 			this.onMenuClick()
 		}
 	}
@@ -178,7 +183,9 @@ class App extends Component {
 			showingInfoWindow: false,
 			activeMarker: null,
 		})
-		this.onMenuClick()
+		if (!this.state.sidebarState) {
+			this.onMenuClick()
+		}
 	}
 	
 /**
@@ -190,7 +197,6 @@ class App extends Component {
 		{this.state.error.gm.length === 0 ?
 		document.querySelector(`[title="${item}"]`).click()
 		 :''}
-		this.onMenuClick()
 	}	
 	
 	
